@@ -1,1 +1,48 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "Ruda";
+    src: url("./assets/fonts/Ruda.ttf");
+}
+
+:root {
+    --bg-black: #242424;
+    --mid-highlight: rgba(255, 255, 255, 0.1);
+    --high-highlight: rgba(255, 255, 255, 0.2);
+
+    --inactive-text: rgba(255, 255, 255, 0.6);
+    --hover-text: rgba(255, 255, 255, 0.9)
+}
+
+* {
+    font-family: "Ruda", Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--bg-black);
+}
+
+button {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    color: var(--inactive-text);
+    padding: 24px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    font-weight: bolder;
+}
+
+button:hover {
+    background-color: var(--mid-highlight);
+    color: var(--hover-text)
+}
+
+button:active {
+    background-color: var(--high-highlight);
+    color: white;
+}

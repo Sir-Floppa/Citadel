@@ -1,0 +1,16 @@
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+}
+
+.left-col {
+    /* border: 1px solid red; */
+    width: 20vw;
+    height: 100vh;
+    padding: 48px 32px;
+    float: left;
+}
+
+main {
+    padding: 48px;
+}
