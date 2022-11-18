@@ -9,9 +9,11 @@ createWindow = () => {
         minWidth: 900,
         title: "Citadel",
         resizable: true,
+        frame: false,
         webPreferences: {
             contextIsolation: false,
-            nodeIntegration: true
+            nodeIntegration: true,
+            devTools: false
         }
     });
     
@@ -33,3 +35,8 @@ app.on("window-all-closed", () => {
       app.quit();
     }
 });
+
+// Title Bar Controls
+ipcMain.on("app/close", () => app.quit());
+ipcMain.on("app/maximize", () => appWin.maximize());
+ipcMain.on("app/hide", () => appWin.minimize());

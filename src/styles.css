@@ -9,7 +9,9 @@
     --high-highlight: rgba(255, 255, 255, 0.2);
 
     --inactive-text: rgba(255, 255, 255, 0.6);
-    --hover-text: rgba(255, 255, 255, 0.9)
+    --hover-text: rgba(255, 255, 255, 0.9);
+
+    --darker: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -19,6 +21,7 @@
     box-sizing: border-box;
     color: white;
     font-size: 16px;
+    user-select: none;
 }
 
 body {

@@ -3,18 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IpcService } from './ipc.service.ts.service';
 import { ProjectsPageComponent } from './projects-page/projects-page.component';
+import { TitleBarComponent } from './title-bar/title-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    TitleBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    IpcService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,9 +6,11 @@ h1 {
 .left-col {
     /* border: 1px solid red; */
     width: 20vw;
-    height: 100vh;
+    height: calc(100vh - 38px);
     padding: 48px 32px;
     float: left;
+    background-color: var(--darker);
+    margin-right: 48px;
 }
 
 main {
