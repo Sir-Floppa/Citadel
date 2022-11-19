@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
   selector: 'app-projects-page',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsPageComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private ipcService: IpcService) { }
+  
   ngOnInit(): void {
+  }
+  
+  newProject(): void {
+    this.ipcService.send("projects/new")
+  }
+
+  openProject(): void {
+    this.ipcService.send("projects/open")
   }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { app } from 'electron';
 import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
