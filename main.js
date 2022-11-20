@@ -1,4 +1,4 @@
-const { app, ipcMain, BrowserWindow, dialog, event, webContents } = require("electron");
+const { app, ipcMain, BrowserWindow, dialog, remote, webContents } = require("electron");
 const fs = require("fs");
 
 let appWin;
@@ -40,7 +40,14 @@ app.on("window-all-closed", () => {
 
 // Title Bar Controls
 ipcMain.on("app/close", () => app.quit()); 
-ipcMain.on("app/maximize", () => appWin.maximize());
+ipcMain.on("app/maximize", () => {
+    if(!appWin.isMaximized()){
+        appWin.maximize()
+    }
+    else {
+        appWin.restore()
+    }
+});
 ipcMain.on("app/hide", () => appWin.minimize());
 
 // Project Menu Controls
@@ -66,4 +73,13 @@ ipcMain.on("projects/open", async () => {
     if(!project.canceled) {
         console.log(project);
     }
+})
+
+// Project Creation
+ipcMain.on("projects/create", (event, args) => {
+    console.log(args);
+    fs.writeFileSync(args.file, 'charactersPath: ./Characters/\neventsPath: ./Events\norganizationsPath: ./Organizations');
+    fs.mkdirSync(args.path + 'Characters');
+    fs.mkdirSync(args.path + 'Organizations');
+    fs.mkdirSync(args.path + 'Events');
 })

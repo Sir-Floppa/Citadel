@@ -32,5 +32,5 @@ button {
 }
 
 #closeBtn:hover {
-    background-color: rgb(255, 58, 58);
+    background-color: var(--warning-red);
 }

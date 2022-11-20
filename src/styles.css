@@ -12,6 +12,8 @@
     --hover-text: rgba(255, 255, 255, 0.9);
 
     --darker: rgba(0, 0, 0, 0.2);
+
+    --warning-red: rgb(255, 58, 58);
 }
 
 * {
