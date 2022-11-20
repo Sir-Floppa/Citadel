@@ -7,13 +7,15 @@ import { IpcService } from './ipc.service.ts.service';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { FormsModule } from '@angular/forms';
 import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
+import { ProjectViewComponent } from './project-view/project-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
     TitleBarComponent,
-    NewProjectPageComponent
+    NewProjectPageComponent,
+    ProjectViewComponent
   ],
   imports: [
     BrowserModule,

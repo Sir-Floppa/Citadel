@@ -17,9 +17,9 @@ export class NewProjectPageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private ipcService: IpcService) { 
     this.route.params.subscribe(val => {this.projectPath = val['projectPath']})
   }
-
+  
   ngOnInit(): void {
-
+    
   }
 
   acceptBtn(): void {
@@ -33,10 +33,13 @@ export class NewProjectPageComponent implements OnInit {
     
     if(name) {
       let data = {
+        projectName: name,
+        projectResume: res,
         path: this.projectPath,
         file: `${this.projectPath}${name}.ctd`
       }
       this.ipcService.send("projects/create", data);
+      this.router.navigate(["projectView"]);
     }
   }
 

@@ -78,7 +78,7 @@ ipcMain.on("projects/open", async () => {
 // Project Creation
 ipcMain.on("projects/create", (event, args) => {
     console.log(args);
-    fs.writeFileSync(args.file, 'charactersPath: ./Characters/\neventsPath: ./Events\norganizationsPath: ./Organizations');
+    fs.writeFileSync(args.file, `{\n    projectName: '${args.projectName}',\n    projectResume: '${args.projectResume}',\n    charactersPath: './Characters/',\n    eventsPath: './Events',\n    organizationsPath: './Organizations'\n}`);
     fs.mkdirSync(args.path + 'Characters');
     fs.mkdirSync(args.path + 'Organizations');
     fs.mkdirSync(args.path + 'Events');
