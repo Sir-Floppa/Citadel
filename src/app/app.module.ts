@@ -5,16 +5,20 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IpcService } from './ipc.service.ts.service';
 import { TitleBarComponent } from './title-bar/title-bar.component';
+import { FormsModule } from '@angular/forms';
+import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    TitleBarComponent
+    TitleBarComponent,
+    NewProjectPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     IpcService

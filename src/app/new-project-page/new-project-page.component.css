@@ -1,0 +1,24 @@
+img {
+    float: left;
+    width: 50vw;
+}
+
+main {
+    float: left;
+}
+
+main * {
+    display: block;
+    width: 50vw;
+}
+
+input, textarea {
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: var(--mid-highlight);
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 100%;
+    resize: vertical;
+}

@@ -1,6 +1,5 @@
-const { app, ipcMain, BrowserWindow, dialog } = require("electron");
+const { app, ipcMain, BrowserWindow, dialog, event, webContents } = require("electron");
 const fs = require("fs");
-const { filter } = require("rxjs");
 
 let appWin;
 
@@ -16,7 +15,7 @@ createWindow = () => {
         webPreferences: {
             contextIsolation: false,
             nodeIntegration: true,
-            devTools: false
+            // devTools: false
         }
     });
     
@@ -47,9 +46,17 @@ ipcMain.on("app/hide", () => appWin.minimize());
 // Project Menu Controls
 ipcMain.on("projects/new", async () => { 
     console.log('NEW PROJECT');
-    let newProject = await dialog.showOpenDialog( appWin, {properties: ['openDirectory', 'createDirectory', 'dontAddToRecent']} ) 
+    let newProject = await dialog.showOpenDialog( appWin, {properties: ['openDirectory', 'createDirectory', 'dontAddToRecent'], title: 'Select an empty folder...'} ) 
     if(!newProject.canceled) {
         console.log(newProject);
+        if(fs.readdirSync(newProject.filePaths + '\\').length === 0) {
+            console.log('EMPTY PATH');
+            appWin.webContents.send('projects/createNew', newProject.filePaths + '\\');
+        }
+        else {
+            console.log('NOT EMPTY PATH');
+            dialog.showMessageBoxSync(appWin, {title: 'Error', message: 'Selected directory is not empty.', type: 'error'});
+        }
     }
 })
 

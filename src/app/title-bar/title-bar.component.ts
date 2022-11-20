@@ -9,6 +9,7 @@ import { IpcService } from '../ipc.service.ts.service';
 export class TitleBarComponent implements OnInit {
 
   constructor(private ipcService: IpcService) { }
+  title = "Citadel"
 
   ngOnInit(): void {
   }
