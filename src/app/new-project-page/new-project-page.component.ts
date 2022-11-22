@@ -39,7 +39,7 @@ export class NewProjectPageComponent implements OnInit {
         file: `${this.projectPath}${name}.ctd`
       }
       this.ipcService.send("projects/create", data);
-      this.router.navigate(["projectView"]);
+      this.router.navigate(["projectView", this.projectPath]);
     }
   }
 

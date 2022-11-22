@@ -56,9 +56,9 @@ ipcMain.on("projects/new", async () => {
     let newProject = await dialog.showOpenDialog( appWin, {properties: ['openDirectory', 'createDirectory', 'dontAddToRecent'], title: 'Select an empty folder...'} ) 
     if(!newProject.canceled) {
         console.log(newProject);
-        if(fs.readdirSync(newProject.filePaths + '\\').length === 0) {
+        if(fs.readdirSync(newProject.filePaths + '/').length === 0) {
             console.log('EMPTY PATH');
-            appWin.webContents.send('projects/createNew', newProject.filePaths + '\\');
+            appWin.webContents.send('projects/createNew', newProject.filePaths + '/');
         }
         else {
             console.log('NOT EMPTY PATH');
@@ -72,6 +72,7 @@ ipcMain.on("projects/open", async () => {
     let project = await dialog.showOpenDialog( appWin, {filters: [{name: 'Citadel Project File', extensions: ["ctd"]}]} )
     if(!project.canceled) {
         console.log(project);
+        appWin.webContents.send('projects/load', project.filePaths + '/')
     }
 })
 

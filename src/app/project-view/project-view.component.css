@@ -1,0 +1,17 @@
+a img {
+    filter: invert(100%);
+    opacity: 0.6;
+}
+
+a:hover img {
+    opacity: 0.9;
+}
+
+a:active img {
+    opacity: 1;
+}
+
+.left-col {
+    min-width: 28ch;
+
+}

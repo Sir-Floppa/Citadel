@@ -7,7 +7,7 @@ import { ProjectsPageComponent } from './projects-page/projects-page.component';
 const routes: Routes = [
   {path: '', component: ProjectsPageComponent},
   {path: 'newProject/:projectPath', component: NewProjectPageComponent},
-  {path: 'projectView', component: ProjectViewComponent}
+  {path: 'projectView/:projectPath', component: ProjectViewComponent}
 ];
 
 @NgModule({

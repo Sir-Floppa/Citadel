@@ -21,5 +21,13 @@ export class ProjectsPageComponent implements OnInit {
 
   openProject(): void {
     this.ipcService.send("projects/open")
+    this.ipcService.on("projects/load", (event: Object, data: string) => { 
+      let path = data.split('\\');
+      path.pop();
+      let jointPath = path.join('/');
+      console.log("PATH", path);
+      console.log("JOINT PATH", jointPath);
+      this.router.navigate(['projectView', jointPath])
+    })
   }
 }

@@ -3,16 +3,6 @@ h1 {
     margin-bottom: 12px;
 }
 
-.left-col {
-    /* border: 1px solid red; */
-    width: 20vw;
-    height: calc(100vh - 38px);
-    padding: 48px 32px;
-    float: left;
-    background-color: var(--darker);
-    margin-right: 48px;
-}
-
 main {
     padding: 48px;
 }
