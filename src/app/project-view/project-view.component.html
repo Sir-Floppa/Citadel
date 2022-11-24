@@ -1,18 +1,18 @@
 <div class="left-col">
-    <a [routerLink]="">
+    <button (click)="goToCharacters()">
         <img src="assets/icons/user.svg" alt="">
         Personajes
-    </a>
-    <a [routerLink]="">
+    </button>
+    <button (click)="goToOrganizations()">
         <img src="assets/icons/users.svg" alt="">
         Organizaciones
-    </a>
-    <a [routerLink]="">
+    </button>
+    <button>
         <img src="assets/icons/user.svg" alt="">
         Eventos
-    </a>
+    </button>
 </div>
 
 <main>
-    
+    <router-outlet></router-outlet>
 </main>

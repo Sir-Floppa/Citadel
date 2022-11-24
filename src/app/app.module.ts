@@ -8,6 +8,8 @@ import { TitleBarComponent } from './title-bar/title-bar.component';
 import { FormsModule } from '@angular/forms';
 import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
+import { CharactersOverviewComponent } from './characters-overview/characters-overview.component';
+import { OrganizationsOverviewComponent } from './organizations-overview/organizations-overview.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ProjectViewComponent } from './project-view/project-view.component';
     routingComponents,
     TitleBarComponent,
     NewProjectPageComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    CharactersOverviewComponent,
+    OrganizationsOverviewComponent
   ],
   imports: [
     BrowserModule,

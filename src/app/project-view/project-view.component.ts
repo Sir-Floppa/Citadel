@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-view',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectViewComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private router: Router, private route: ActivatedRoute) { }
+  
   ngOnInit(): void {
   }
+  
+  // NAVIGATION FUNCTIONS
+  goToCharacters(): void {
+    this.router.navigate(['./charactersOverview'], {relativeTo: this.route})
+  }
 
+  goToOrganizations(): void {
+    this.router.navigate(['./organizationsOverview'], {relativeTo: this.route})
+  }
 }
