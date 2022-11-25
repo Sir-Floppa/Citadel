@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
   selector: 'app-characters-overview',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharactersOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ipcService: IpcService, private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
+  }
+
+  newChar(): void {
+    this.ipcService.send('characters/new');
   }
 
 }

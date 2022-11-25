@@ -30,6 +30,13 @@ createWindow = () => {
     });
 }
 
+let projectPath;
+let projectName;
+let projectRes;
+let charPath;
+let orgPath;
+let eventPath;
+
 app.on("ready", createWindow);
 
 app.on("window-all-closed", () => {
@@ -59,6 +66,7 @@ ipcMain.on("projects/new", async () => {
         if(fs.readdirSync(newProject.filePaths + '/').length === 0) {
             console.log('EMPTY PATH');
             appWin.webContents.send('projects/createNew', newProject.filePaths + '/');
+            projectPath = newProject.filePaths + '/';
         }
         else {
             console.log('NOT EMPTY PATH');
@@ -72,7 +80,18 @@ ipcMain.on("projects/open", async () => {
     let project = await dialog.showOpenDialog( appWin, {filters: [{name: 'Citadel Project File', extensions: ["ctd"]}]} )
     if(!project.canceled) {
         console.log(project);
-        appWin.webContents.send('projects/load', project.filePaths + '/')
+        fetch(project.filePaths)
+            .then((res) => res.json())
+            .then((json) => {
+                console.log(json);
+                projectName = json.projectName;
+                projectRes = json.projectResume;
+                charPath = project.filePaths + '/' + json.charactersPath;
+                orgPath = project.filePaths + '/' + json.organizationsPath;
+                eventPath = project.file + '/' + json.eventsPath;
+            });
+        appWin.webContents.send('projects/load', project.filePaths + '/');
+        projectPath = project.filePaths + '/';
     }
 })
 
@@ -83,4 +102,10 @@ ipcMain.on("projects/create", (event, args) => {
     fs.mkdirSync(args.path + 'Characters');
     fs.mkdirSync(args.path + 'Organizations');
     fs.mkdirSync(args.path + 'Events');
+    projectName = args.projectName;
+})
+
+// Characters Control
+ipcMain.on("characters/new", () => {
+
 })

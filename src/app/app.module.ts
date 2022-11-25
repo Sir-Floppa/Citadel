@@ -19,7 +19,7 @@ import { OrganizationsOverviewComponent } from './organizations-overview/organiz
     NewProjectPageComponent,
     ProjectViewComponent,
     CharactersOverviewComponent,
-    OrganizationsOverviewComponent
+    OrganizationsOverviewComponent,
   ],
   imports: [
     BrowserModule,

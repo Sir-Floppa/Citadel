@@ -77,3 +77,16 @@ textarea::-webkit-scrollbar-thumb {
     background-color: var(--darker);
     margin-right: 48px;
 }
+
+button img {
+    filter: invert(100%);
+    opacity: 0.6;
+}
+
+button:hover img {
+    opacity: 0.9;
+}
+
+button:active img {
+    opacity: 1;
+}

@@ -1,0 +1,15 @@
+button {
+    text-align: left;
+}
+
+button * {
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.character {
+    width: 160px;
+    display: inline-block;
+    text-align: center;
+    margin: 0;
+}
