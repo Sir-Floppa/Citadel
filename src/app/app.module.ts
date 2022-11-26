@@ -10,6 +10,7 @@ import { NewProjectPageComponent } from './new-project-page/new-project-page.com
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { CharactersOverviewComponent } from './characters-overview/characters-overview.component';
 import { OrganizationsOverviewComponent } from './organizations-overview/organizations-overview.component';
+import { NewCharacterComponent } from './new-character/new-character.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { OrganizationsOverviewComponent } from './organizations-overview/organiz
     ProjectViewComponent,
     CharactersOverviewComponent,
     OrganizationsOverviewComponent,
+    NewCharacterComponent,
   ],
   imports: [
     BrowserModule,

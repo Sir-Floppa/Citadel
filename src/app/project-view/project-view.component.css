@@ -19,6 +19,12 @@ button:active img {
     min-width: 28ch;
 }
 
-main {
+router-outlet {
     margin-top: 16px;
+}
+
+.outlet-container {
+    margin: 0;
+    float: left;
+    width: calc(75vw - 48px);
 }

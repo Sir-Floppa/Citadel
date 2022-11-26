@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
@@ -9,13 +9,16 @@ import { IpcService } from '../ipc.service.ts.service';
 })
 export class CharactersOverviewComponent implements OnInit {
 
-  constructor(private ipcService: IpcService, private route: ActivatedRoute ) { }
+  constructor(
+    private ipcService: IpcService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
 
   newChar(): void {
-    this.ipcService.send('characters/new');
+    this.router.navigate(["./charView/1"], {relativeTo: this.route});
   }
 
 }

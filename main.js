@@ -7,8 +7,8 @@ createWindow = () => {
     appWin = new BrowserWindow({
         width: 1280,
         height: 720,
-        minWidth: 900,
-        minHeight: 600,
+        minWidth: 1080,
+        minHeight: 720,
         title: "Citadel",
         resizable: true,
         frame: false,
@@ -80,16 +80,6 @@ ipcMain.on("projects/open", async () => {
     let project = await dialog.showOpenDialog( appWin, {filters: [{name: 'Citadel Project File', extensions: ["ctd"]}]} )
     if(!project.canceled) {
         console.log(project);
-        fetch(project.filePaths)
-            .then((res) => res.json())
-            .then((json) => {
-                console.log(json);
-                projectName = json.projectName;
-                projectRes = json.projectResume;
-                charPath = project.filePaths + '/' + json.charactersPath;
-                orgPath = project.filePaths + '/' + json.organizationsPath;
-                eventPath = project.file + '/' + json.eventsPath;
-            });
         appWin.webContents.send('projects/load', project.filePaths + '/');
         projectPath = project.filePaths + '/';
     }
