@@ -11,21 +11,6 @@ main {
     width: calc(70vw - 64px);
 }
 
-input, label, textarea {
-    display: block;
-}
-
-input, textarea {
-    margin-bottom: 16px;
-    padding: 12px;
-    background-color: var(--mid-highlight);
-    border: none;
-    border-radius: 8px;
-    font-size: 20px;
-    width: 100%;
-    resize: none;
-}
-
 .btnBox {
     width: 50%;
     float: right;

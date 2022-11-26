@@ -90,3 +90,24 @@ button:hover img {
 button:active img {
     opacity: 1;
 }
+
+input, label, textarea {
+    display: block;
+}
+
+input, textarea {
+    margin-bottom: 16px;
+    padding: 12px;
+    background-color: var(--mid-highlight);
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    width: 100%;
+    resize: none;
+}
+
+input button{
+    width: 45%;
+    display: inline-block;
+    margin-left: 2.5%
+}
