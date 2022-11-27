@@ -1,5 +1,6 @@
 const { app, ipcMain, BrowserWindow, dialog, remote, webContents } = require("electron");
 const fs = require("fs");
+const path = require("path");
 
 let appWin;
 
@@ -81,21 +82,28 @@ ipcMain.on("projects/open", async () => {
     if(!project.canceled) {
         console.log(project);
         appWin.webContents.send('projects/load', project.filePaths + '/');
-        projectPath = project.filePaths + '/';
+        projectPath = path.dirname(project.filePaths[0]);
+        projectName = project.filePaths[0].split(/(\\|\/)/).pop();
+        console.log(projectPath);
     }
 })
 
 // Project Creation
 ipcMain.on("projects/create", (event, args) => {
     console.log(args);
-    fs.writeFileSync(args.file, `{\n    projectName: '${args.projectName}',\n    projectResume: '${args.projectResume}',\n    charactersPath: './Characters/',\n    eventsPath: './Events',\n    organizationsPath: './Organizations'\n}`);
+    fs.writeFileSync(args.file, `{\n   "projectName": '${args.projectName}',\n   "projectResume": "${args.projectResume}",\n   "charactersPath": "./Characters/",\n   "eventsPath": "./Events",\n   "organizationsPath": "./Organizations"\n}`);
     fs.mkdirSync(args.path + 'Characters');
     fs.mkdirSync(args.path + 'Organizations');
     fs.mkdirSync(args.path + 'Events');
-    projectName = args.projectName;
+    projectName = args.projectName + '/';
 })
 
 // Characters Control
-ipcMain.on("characters/new", () => {
+ipcMain.on("characters/new", (event, args) => {
+    console.log(args);
+    console.log(projectPath);
+    console.log(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(`${projectPath}/${projectName}`);
 
+    console.log(projectFile);
 })

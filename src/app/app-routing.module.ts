@@ -14,7 +14,7 @@ const routes: Routes = [
     children: [
       {path: 'charactersOverview', component: CharactersOverviewComponent,
         children: [
-          {path: 'charView/:char', component: NewCharacterComponent},
+          {path: 'newChar', component: NewCharacterComponent},
         ]},
       {path: 'organizationsOverview', component: OrganizationsOverviewComponent},
       {path: '', redirectTo: 'charactersOverview', pathMatch: 'full'}

@@ -18,7 +18,7 @@ export class CharactersOverviewComponent implements OnInit {
   }
 
   newChar(): void {
-    this.router.navigate(["./charView/1"], {relativeTo: this.route});
+    this.router.navigate(["./newChar"], {relativeTo: this.route});
   }
 
 }

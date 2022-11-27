@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
   selector: 'app-new-character',
@@ -13,7 +14,7 @@ export class NewCharacterComponent implements OnInit {
   charOrigin: string = '';
   charRes: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private route: ActivatedRoute, private ipcService: IpcService) { }
 
   ngOnInit(): void {
   }
@@ -28,10 +29,18 @@ export class NewCharacterComponent implements OnInit {
     console.log("BIRTH", this.charBirth);
     console.log("ORIGIN", this.charOrigin);
     console.log("RESUME", this.charRes);
+
+    this.ipcService.send('characters/new', 
+    {
+      name: this.charName, 
+      birth: this.charBirth, 
+      origin: this.charOrigin, 
+      resume: this.charRes
+    })
   }
 
   cancelBtn(): void {
-    this.router.navigate(['./../..'], {relativeTo: this.route})
+    this.router.navigate(['./..'], {relativeTo: this.route})
   }
 
 }
