@@ -37,6 +37,8 @@ export class NewCharacterComponent implements OnInit {
       origin: this.charOrigin, 
       resume: this.charRes
     })
+
+    this.ipcService.on('characters/created', () => {this.router.navigate(['./..'], {relativeTo: this.route})})
   }
 
   cancelBtn(): void {

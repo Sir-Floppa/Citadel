@@ -91,7 +91,7 @@ ipcMain.on("projects/open", async () => {
 // Project Creation
 ipcMain.on("projects/create", (event, args) => {
     console.log(args);
-    fs.writeFileSync(args.file, `{\n   "projectName": '${args.projectName}',\n   "projectResume": "${args.projectResume}",\n   "charactersPath": "./Characters/",\n   "eventsPath": "./Events",\n   "organizationsPath": "./Organizations"\n}`);
+    fs.writeFileSync(args.file, `{\n   "projectName": "${args.projectName}",\n   "projectResume": "${args.projectResume}",\n   "charactersPath": "./Characters/",\n   "eventsPath": "./Events",\n   "organizationsPath": "./Organizations"\n}`);
     fs.mkdirSync(args.path + 'Characters');
     fs.mkdirSync(args.path + 'Organizations');
     fs.mkdirSync(args.path + 'Events');
@@ -103,7 +103,10 @@ ipcMain.on("characters/new", (event, args) => {
     console.log(args);
     console.log(projectPath);
     console.log(`${projectPath}/${projectName}`);
-    let projectFile = JSON.parse(`${projectPath}/${projectName}`);
-
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
     console.log(projectFile);
+    let newFileContent = `{\n   "name": "${args.name}",\n   "birth": "${args.birth}",\n   "origin": "${args.origin}",\n   "resume": "${args.resume}"\n}`
+    fs.writeFileSync(`${projectPath}/${projectFile.charactersPath}/${args.name}.json`, newFileContent);
+    appWin.webContents.send('characters/created')
 })
