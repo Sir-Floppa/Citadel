@@ -110,3 +110,19 @@ ipcMain.on("characters/new", (event, args) => {
     fs.writeFileSync(`${projectPath}/${projectFile.charactersPath}/${args.name}.json`, newFileContent);
     appWin.webContents.send('characters/created')
 })
+
+ipcMain.on("characters/load", () => {
+    let parsedFiles = [];
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
+    charPath = `${projectPath}/${projectFile.charactersPath}`
+    let files = fs.readdirSync(charPath);
+    console.log(files);
+    files.forEach(file => {
+        console.log('CHAR PATH', `${charPath}/${file}`);
+        let content = fs.readFileSync(`${charPath}/${file}`);
+        parsedFiles.push(JSON.parse(content));
+    })
+    console.log(parsedFiles);
+    appWin.webContents.send('characters/send', parsedFiles);
+})

@@ -1,4 +1,9 @@
 <section>
+    <button class="character" *ngFor="let char of characters">
+        <img src="assets/icons/user.svg" alt="" class='plus-icon'>
+        {{ char.name }}
+    </button>
+
     <button class="character" (click)="newChar()">
         <img src="assets/icons/plus-circle.svg" alt="" class='plus-icon'>
         Crear Personaje
@@ -8,5 +13,5 @@
 <!-- <div class="vl"></div> -->
 
 <div class="outlet-container">
-    <router-outlet></router-outlet>
+    <router-outlet (addCharacter)="addCharacter($event)"></router-outlet>
 </div>

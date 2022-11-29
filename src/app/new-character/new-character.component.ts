@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CharacterInterface } from '../character-interface';
 import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
@@ -13,6 +14,8 @@ export class NewCharacterComponent implements OnInit {
   charBirth: string = '';
   charOrigin: string = '';
   charRes: string = '';
+
+  @Output() addCharacter = new EventEmitter<CharacterInterface>();
 
   constructor(private router: Router, private route: ActivatedRoute, private ipcService: IpcService) { }
 
@@ -30,13 +33,15 @@ export class NewCharacterComponent implements OnInit {
     console.log("ORIGIN", this.charOrigin);
     console.log("RESUME", this.charRes);
 
-    this.ipcService.send('characters/new', 
-    {
+    let newChar: CharacterInterface = {
       name: this.charName, 
       birth: this.charBirth, 
       origin: this.charOrigin, 
       resume: this.charRes
-    })
+    }
+
+    this.ipcService.send('characters/new', newChar)
+    this.addCharacter.emit(newChar);
 
     this.ipcService.on('characters/created', () => {this.router.navigate(['./..'], {relativeTo: this.route})})
   }
