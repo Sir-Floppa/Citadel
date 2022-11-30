@@ -11,6 +11,8 @@ import { ProjectViewComponent } from './project-view/project-view.component';
 import { CharactersOverviewComponent } from './characters-overview/characters-overview.component';
 import { OrganizationsOverviewComponent } from './organizations-overview/organizations-overview.component';
 import { NewCharacterComponent } from './new-character/new-character.component';
+import { EventsOverviewComponent } from './events-overview/events-overview.component';
+import { NewEventComponent } from './new-event/new-event.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { NewCharacterComponent } from './new-character/new-character.component';
     CharactersOverviewComponent,
     OrganizationsOverviewComponent,
     NewCharacterComponent,
+    EventsOverviewComponent,
+    NewEventComponent,
   ],
   imports: [
     BrowserModule,

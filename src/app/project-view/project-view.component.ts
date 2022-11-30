@@ -21,4 +21,8 @@ export class ProjectViewComponent implements OnInit {
   goToOrganizations(): void {
     this.router.navigate(['./organizationsOverview'], {relativeTo: this.route})
   }
+
+  goToEvents(): void {
+    this.router.navigate(['./eventsOverview'], {relativeTo: this.route})
+  }
 }

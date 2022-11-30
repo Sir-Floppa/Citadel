@@ -1,0 +1,20 @@
+<form (ngSubmit)="acceptBtn()" #f="ngForm">
+    <main>
+        <label for="nameField">Nombre</label>
+        <input type="text" name="nameField" id="nameField">
+        
+        <label for="birthField">Inicio</label>
+        <input type="text" name="birthField" id="birthField">
+
+        <label for="originField">Término</label>
+        <input type="text" name="originField" id="originField">
+        
+        <label for="resField">Resumen</label>
+        <textarea rows=2 name="resField" id="resField"></textarea>
+    
+        <div class="btnBox">
+            <button type="submit" class="formBtn">Aceptar</button>
+            <button class="formBtn" (click)="cancelBtn()">Cancelar</button>
+        </div>
+    </main>    
+</form>

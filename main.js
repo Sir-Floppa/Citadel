@@ -7,9 +7,9 @@ let appWin;
 createWindow = () => {
     appWin = new BrowserWindow({
         width: 1280,
-        height: 720,
+        height: 800,
         minWidth: 1080,
-        minHeight: 720,
+        minHeight: 800,
         title: "Citadel",
         resizable: true,
         frame: false,
