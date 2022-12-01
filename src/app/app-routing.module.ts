@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CharactersOverviewComponent } from './characters-overview/characters-overview.component';
 import { EventsOverviewComponent } from './events-overview/events-overview.component';
 import { NewCharacterComponent } from './new-character/new-character.component';
+import { NewEventComponent } from './new-event/new-event.component';
 import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
 import { OrganizationsOverviewComponent } from './organizations-overview/organizations-overview.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
       {path: 'organizationsOverview', component: OrganizationsOverviewComponent},
       {path: 'eventsOverview', component: EventsOverviewComponent,
         children: [
-          {path: 'newEvent', component: NewCharacterComponent}
+          {path: 'newEvent', component: NewEventComponent}
         ]},
       {path: '', redirectTo: 'charactersOverview', pathMatch: 'full'}
     ]}

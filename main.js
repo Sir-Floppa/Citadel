@@ -7,9 +7,9 @@ let appWin;
 createWindow = () => {
     appWin = new BrowserWindow({
         width: 1280,
-        height: 800,
+        height: 720,
         minWidth: 1080,
-        minHeight: 800,
+        minHeight: 720,
         title: "Citadel",
         resizable: true,
         frame: false,
@@ -125,4 +125,33 @@ ipcMain.on("characters/load", () => {
     })
     console.log(parsedFiles);
     appWin.webContents.send('characters/send', parsedFiles);
+})
+
+// Events Control
+ipcMain.on("events/new", (event, args) => {
+    console.log(args);
+    console.log(projectPath);
+    console.log(`${projectPath}/${projectName}`);
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
+    console.log(projectFile);
+    let newFileContent = `{\n   "name": "${args.name}",\n   "begin": "${args.begin}",\n   "finish": "${args.finish}",\n   "resume": "${args.resume}"\n}`
+    fs.writeFileSync(`${projectPath}/${projectFile.eventsPath}/${args.name}.json`, newFileContent);
+    appWin.webContents.send('events/created')
+})
+
+ipcMain.on("events/load", () => {
+    let parsedFiles = [];
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
+    eventsPath = `${projectPath}/${projectFile.eventsPath}`
+    let files = fs.readdirSync(eventsPath);
+    console.log(files);
+    files.forEach(file => {
+        console.log('EVENT PATH', `${eventsPath}/${file}`);
+        let content = fs.readFileSync(`${eventsPath}/${file}`);
+        parsedFiles.push(JSON.parse(content));
+    })
+    console.log(parsedFiles);
+    appWin.webContents.send('events/send', parsedFiles);
 })

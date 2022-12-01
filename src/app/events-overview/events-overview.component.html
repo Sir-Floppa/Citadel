@@ -5,6 +5,14 @@
 </button>
 
 <section class="time-line">
+    <button class="event" *ngFor="let event of events">
+        <img src="assets/icons/calendar.svg" alt="">
+        <div>
+            <h2>{{ event.name }}</h2>
+            <sub>{{ event.begin}} - {{ event.finish }}</sub>
+            <p>{{ event.resume }}</p>
+        </div>
+    </button>
 
 </section>
 
