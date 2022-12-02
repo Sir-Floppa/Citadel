@@ -1,1 +1,19 @@
-<p>organizations-overview works!</p>
+<button class="event" (click)="newOrganization()">
+    <img src="assets/icons/plus-circle.svg" alt="" class='plus-icon'>
+    Crear Organización
+</button>
+
+<section class="organizations">
+    <button class="organization" *ngFor="let organization of organizations">
+        <img src="assets/icons/users.svg" alt="">
+        <div>
+            <h2>{{ organization.name }}</h2>
+            <p>{{ organization.location }}</p>
+        </div>
+    </button>
+
+</section>
+
+<div class="outlet-container">
+    <router-outlet></router-outlet>
+</div>

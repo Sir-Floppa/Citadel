@@ -155,3 +155,32 @@ ipcMain.on("events/load", () => {
     console.log(parsedFiles);
     appWin.webContents.send('events/send', parsedFiles);
 })
+
+// Organizations Control
+ipcMain.on("organizations/new", (event, args) => {
+    console.log(args);
+    console.log(projectPath);
+    console.log(`${projectPath}/${projectName}`);
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
+    console.log(projectFile);
+    let newFileContent = `{\n   "name": "${args.name}",\n   "location": "${args.location}",\n   "resume": "${args.members}"\n}`
+    fs.writeFileSync(`${projectPath}/${projectFile.organizationsPath}/${args.name}.json`, newFileContent);
+    appWin.webContents.send('organizations/created')
+})
+
+ipcMain.on("organizations/load", () => {
+    let parsedFiles = [];
+    let jsonFile = fs.readFileSync(`${projectPath}/${projectName}`);
+    let projectFile = JSON.parse(jsonFile);
+    organizationsPath = `${projectPath}/${projectFile.organizationsPath}`
+    let files = fs.readdirSync(organizationsPath);
+    console.log(files);
+    files.forEach(file => {
+        console.log('EVENT PATH', `${organizationsPath}/${file}`);
+        let content = fs.readFileSync(`${organizationsPath}/${file}`);
+        parsedFiles.push(JSON.parse(content));
+    })
+    console.log(parsedFiles);
+    appWin.webContents.send('organizations/send', parsedFiles);
+})

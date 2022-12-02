@@ -4,6 +4,7 @@ import { CharactersOverviewComponent } from './characters-overview/characters-ov
 import { EventsOverviewComponent } from './events-overview/events-overview.component';
 import { NewCharacterComponent } from './new-character/new-character.component';
 import { NewEventComponent } from './new-event/new-event.component';
+import { NewOrganizationComponent } from './new-organization/new-organization.component';
 import { NewProjectPageComponent } from './new-project-page/new-project-page.component';
 import { OrganizationsOverviewComponent } from './organizations-overview/organizations-overview.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
@@ -18,7 +19,10 @@ const routes: Routes = [
         children: [
           {path: 'newChar', component: NewCharacterComponent},
         ]},
-      {path: 'organizationsOverview', component: OrganizationsOverviewComponent},
+      {path: 'organizationsOverview', component: OrganizationsOverviewComponent,
+        children: [
+          {path: 'newOrganization', component: NewOrganizationComponent}
+        ]},
       {path: 'eventsOverview', component: EventsOverviewComponent,
         children: [
           {path: 'newEvent', component: NewEventComponent}

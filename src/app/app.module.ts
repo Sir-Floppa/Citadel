@@ -13,6 +13,7 @@ import { OrganizationsOverviewComponent } from './organizations-overview/organiz
 import { NewCharacterComponent } from './new-character/new-character.component';
 import { EventsOverviewComponent } from './events-overview/events-overview.component';
 import { NewEventComponent } from './new-event/new-event.component';
+import { NewOrganizationComponent } from './new-organization/new-organization.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewEventComponent } from './new-event/new-event.component';
     NewCharacterComponent,
     EventsOverviewComponent,
     NewEventComponent,
+    NewOrganizationComponent,
   ],
   imports: [
     BrowserModule,

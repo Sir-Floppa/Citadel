@@ -1,0 +1,63 @@
+.organizations, .outlet-container {
+    height: calc(100vh - 132px);
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+section {
+    float: left;
+    width: 60%;
+}
+
+.outlet-container {
+    width: 35%;
+    margin-left: 8px;
+}
+
+.organizations button {
+    width: 120px;
+    display: inline-block;
+}
+
+.organizations button div {
+    display: block;
+    width: 100%;
+}
+
+.organizations button div * {
+    line-break: anywhere;
+}
+
+.organizations button img {
+    filter: invert(100%);
+    display: inline-block;
+    margin: 16px;
+}
+
+.organizations button * {
+    opacity: 0.6;
+}
+
+.organizations button:hover *  {
+    opacity: 0.9;
+}
+
+.organizations button:active * {
+    opacity: 1;
+}
+
+.organizations sub {
+    font-weight: lighter;
+    font-size: 8px;
+    color: inherit;
+}
+
+.organizations p {
+    font-weight: lighter;
+    font-size: 12px;
+    color: inherit;
+}
+
+.organizations {
+    overflow-x: auto;
+}
