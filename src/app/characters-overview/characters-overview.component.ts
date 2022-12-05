@@ -24,19 +24,13 @@ export class CharactersOverviewComponent implements OnInit {
         console.log('CHARACTERS', this.characters);
         this.changeDetection.detectChanges();
       })
+      this.ipcService.on('characters/created', () => {this.ipcService.send('characters/load')})
     }
     
   ngOnInit(): void {
   }
-
+  
   newChar(): void {
     this.router.navigate(["./newChar"], {relativeTo: this.route});
   }
-
-  addCharacter(char: any): void {
-    console.log("ACTUALIZADO");
-    this.characters.push(char);
-    this.changeDetection.detectChanges();
-  }
-
 }

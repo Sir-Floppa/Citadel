@@ -41,7 +41,6 @@ export class NewCharacterComponent implements OnInit {
     }
 
     this.ipcService.send('characters/new', newChar)
-    this.addCharacter.emit(newChar);
 
     this.ipcService.on('characters/created', () => {this.router.navigate(['./..'], {relativeTo: this.route})})
   }

@@ -25,6 +25,7 @@ export class OrganizationsOverviewComponent implements OnInit {
         console.log('ORGANIZATIONS', this.organizations);
         this.changeDetection.detectChanges();
     })
+    this.ipcService.on('organizations/created', () => {this.ipcService.send('organizations/load')})
   }
 
   ngOnInit(): void {
