@@ -95,7 +95,7 @@ ipcMain.on("projects/create", (event, args) => {
     fs.mkdirSync(args.path + 'Characters');
     fs.mkdirSync(args.path + 'Organizations');
     fs.mkdirSync(args.path + 'Events');
-    projectName = args.projectName + '/';
+    projectName = args.projectName + '.ctd/';
 })
 
 // Characters Control
