@@ -25,7 +25,7 @@ export class EventsOverviewComponent implements OnInit {
         console.log('EVENTS', this.events);
         this.changeDetection.detectChanges();
     })
-    this.ipcService.on('events/created', () => {this.ipcService.send('events.load')})
+    this.ipcService.on('events/created', () => {this.ipcService.send('events/load')})
   }
 
   ngOnInit(): void {
