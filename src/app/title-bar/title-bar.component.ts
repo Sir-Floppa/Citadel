@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IpcService } from '../ipc.service.ts.service';
 
 @Component({
@@ -8,7 +9,10 @@ import { IpcService } from '../ipc.service.ts.service';
 })
 export class TitleBarComponent implements OnInit {
 
-  constructor(private ipcService: IpcService) { }
+  constructor(
+    private ipcService: IpcService,
+    private router: Router,
+    private route: ActivatedRoute) { }
   title = "Citadel"
 
   ngOnInit(): void {
@@ -24,6 +28,10 @@ export class TitleBarComponent implements OnInit {
 
   hideApp(): void {
     this.ipcService.send("app/hide")
+  }
+
+  goToMain(): void {
+    this.router.navigate(['/'])
   }
 
 }
